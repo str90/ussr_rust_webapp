@@ -1,5 +1,5 @@
 CREATE DATABASE ussr_rust_server_db;
-GRANT ALL ON ussr_rust_db_user.* TO ussr_rust_db_user@localhost IDENTIFIED BY 'j8Ko-!AxZ,B7=Q';
+GRANT ALL ON ussr_rust_server_db.* TO ussr_rust_db_user@localhost IDENTIFIED BY '';
 FLUSH PRIVILEGES;
 USE ussr_rust_server_db;
 CREATE TABLE billing_table (id int NOT NULL AUTO_INCREMENT, User varchar(50) NOT NULL, Item varchar(50) NOT NULL, Quantity int NOT NULL, Pay_amount int NOT NULL, isDispensed tinyint(1), PRIMARY KEY (id));
