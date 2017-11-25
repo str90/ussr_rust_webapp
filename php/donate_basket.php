@@ -1,17 +1,8 @@
 <?php
 
+require_once('classes/item_pack.php');
+
 session_start();
-
-class item_pack {
-  public $item;
-  public $item_amount;
-
-  function __construct($in_item, $in_item_amount) {
-    $this->item = $in_item;
-    $this->item_amount = $in_item_amount;
-  }
-}
-//include "classes/trade_object.php";
 
 //mysql credential variables
 
@@ -31,7 +22,7 @@ for($i = 0; $i < count($_SESSION['basket_item_objects']); $i++) {
   $queryResult = $db_connection->query("SELECT * FROM billing_table_costs;");
   $queryNumRows = $queryResult->num_rows;
   if($queryNumRows > 0) while($currentRow = $queryResult->fetch_assoc()) {
-    if($_SESSION['basket_item_objects'][$i]->item === $currentRow['Item']) $order_sum += (int)$currentRow['Cost'] * (int)$_SESSION['basket_item_objects'][$i]->item_amount;
+    if($_SESSION['basket_item_objects'][$i]->getItemName() === $currentRow['Item']) $order_sum += (int)$currentRow['Cost'] * (int)$_SESSION['basket_item_objects'][$i]->getItemAmount();
   }
 }
 
